@@ -40,6 +40,11 @@ var height = 123.2 // Double
 let sum = Double(age) + height // Kan inte addera Int och Double - Måste typecasta!
 
 
+let composite = "Hej, \(constantString), jag är \(height) år gammal!"
+
+let composite2 = constantString + " " + String(age)
+
+
 // Arrayer
 
 let intArray:[Int] = [23, 34, 45]
@@ -49,6 +54,37 @@ let indexValue = intArray[2] // Fungerar likadant som nästan alla språk
 let stringArray = ["hej", "på", "dig"]
 
 let stringValue = stringArray[0]
+
+
+var tomArray = [Int]() // Detta skapar en TOM ARRAY
+var annanTomArray:[Int] = [] // Detta är OCKSÅ en TOM ARRAY
+for i in 0...4 {
+    tomArray.append(i)
+}
+
+var tomDictionary = [String:String]()
+var annanTomDictionary:[String:String] = [:]
+tomDictionary["hej"] = "Du"
+
+
+// Swift Övningar 1 - Uppgift 10
+
+let dagar = ["måndag", "tisdag", "onsdag", "torsdag", "fredag", "lördag", "söndag"]
+let väder = ["regn", "sol", "snö", "moln"]
+var vädret2019 = [[String:String]]()
+for _ in 0..<52 {
+    for dag in dagar {
+        let slumpIndex = arc4random_uniform(UInt32(väder.count))
+        let slumpVäder = väder[Int(slumpIndex)]
+        vädret2019.append([dag:slumpVäder])
+    }
+}
+let vädretVilkenDagSomHelst = vädret2019[34]
+print(vädretVilkenDagSomHelst)
+
+
+
+
 
 
 // Loopar
@@ -70,8 +106,8 @@ for i in 0...5 { // where i%3==0 // Hoppa var 3e
     print(i)
 }
 
-for i in 0...stringArray.count {
-    print(i)
+for i in 0..<stringArray.count {
+    print(stringArray[i]) // BORDE ge ett fel! :(
 }
 
 
@@ -79,11 +115,11 @@ for i in 0...stringArray.count {
 
 let optionalDictionary: [String:String]? // Optional "array" av nyckel-värde par - Optionals kan bara skapas inuti en klass
 
-let dictionary = ["nyckel1":"hej", "nyckel2":"på", "nyckel3":"dig"]
+let dictionary:[String:String] = ["nyckel1":"hej", "nyckel2":"på", "nyckel3":"dig"]
 
-let hej = dictionary["nyckel1"]
+let hej = dictionary["nyckel1"] // "hej" är faktiskt en OPTIONAL
 
-
+print(hej as Any)
 
 
 // Klasser
@@ -123,4 +159,7 @@ let newString = p.returnNewString(addString: "hallo")
 
 let personDictionary = ["Markus":p] // [String:Person]
 
+let optionalArrayDictionary:[String:[Int]?]
+
+//optionalArrayDictionary["hej"] = "På dig"
 
