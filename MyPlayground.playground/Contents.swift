@@ -72,12 +72,11 @@ tomDictionary["hej"] = "Du"
 let dagar = ["måndag", "tisdag", "onsdag", "torsdag", "fredag", "lördag", "söndag"]
 let väder = ["regn", "sol", "snö", "moln"]
 var vädret2019 = [[String:String]]()
-for _ in 0..<52 {
-    for dag in dagar {
-        let slumpIndex = arc4random_uniform(UInt32(väder.count))
-        let slumpVäder = väder[Int(slumpIndex)]
-        vädret2019.append([dag:slumpVäder])
-    }
+for i in 0..<365 {
+    let dagIndex = i % dagar.count
+    let slumpIndex = arc4random_uniform(UInt32(väder.count))
+    let slumpVäder = väder[Int(slumpIndex)]
+    vädret2019.append([dagar[dagIndex]:slumpVäder])
 }
 let vädretVilkenDagSomHelst = vädret2019[34]
 print(vädretVilkenDagSomHelst)
