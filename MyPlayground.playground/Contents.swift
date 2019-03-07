@@ -250,14 +250,19 @@ func foo(firstName:String?, lastName:String?) {
     }
     
     // Guard
-    guard let firstName = firstName else {
+    guard let firstN = firstName else {
         return
     }
-    guard let lastName = lastName else {
+    guard let lastN = lastName else {
         return
     }
     
-    print(firstName + lastName)
+    // Serie-guard
+    guard let fn = firstName, let ln = lastName else {
+        return
+    }
+    
+    print(fn + " " + ln)
 }
 
 
