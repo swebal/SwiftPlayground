@@ -69,18 +69,18 @@ tomDictionary["hej"] = "Du"
 
 // Swift Övningar 1 - Uppgift 10
 
-let dagar = ["måndag", "tisdag", "onsdag", "torsdag", "fredag", "lördag", "söndag"]
-let väder = ["regn", "sol", "snö", "moln"]
-var vädret2019 = [[String:String]]()
-for i in 0..<365 {
-    let dagIndex = i % dagar.count
-    let slumpIndex = arc4random_uniform(UInt32(väder.count))
-    let slumpVäder = väder[Int(slumpIndex)]
-    vädret2019.append([dagar[dagIndex]:slumpVäder])
-}
-let vädretVilkenDagSomHelst = vädret2019[34]
-print(vädretVilkenDagSomHelst)
-
+//let dagar = ["måndag", "tisdag", "onsdag", "torsdag", "fredag", "lördag", "söndag"]
+//let väder = ["regn", "sol", "snö", "moln"]
+//var vädret2019 = [[String:String]]()
+//for i in 0..<365 {
+//    let dagIndex = i % dagar.count
+//    let slumpIndex = arc4random_uniform(UInt32(väder.count))
+//    let slumpVäder = väder[Int(slumpIndex)]
+//    vädret2019.append([dagar[dagIndex]:slumpVäder])
+//}
+//let vädretVilkenDagSomHelst = vädret2019[34]
+//print(vädretVilkenDagSomHelst)
+//
 
 
 
@@ -161,4 +161,93 @@ let personDictionary = ["Markus":p] // [String:Person]
 let optionalArrayDictionary:[String:[Int]?]
 
 //optionalArrayDictionary["hej"] = "På dig"
+
+
+// Subklasser, init och override
+
+class MotorFordon {
+    
+    var märke:String = ""
+    
+    init() {
+        // TOM
+    }
+    
+    init(märke:String) {
+        self.märke = märke
+    }
+    
+    func hej() {
+        print("Mitt fordon")
+    }
+}
+
+class LastBil : MotorFordon {
+    
+    var längd = 0
+    
+    init(längd:Int) {
+        super.init(märke: "Volvo")
+        self.längd = längd
+    }
+    
+    override func hej() {
+        super.hej()
+        print("är en lastbil!")
+    }
+}
+
+let l = LastBil()
+l.hej()
+
+
+// Struct
+
+struct Bil {
+    
+    var antalMil = 4
+    
+    mutating func körSträcka(mil:Int) {
+        antalMil += mil
+    }
+}
+
+
+var b = Bil()
+b.körSträcka(mil: 4)
+
+func körBil(bilen:Bil) {
+    var enBil = bilen
+    enBil.körSträcka(mil: 5)
+}
+
+b.antalMil
+
+
+
+// Guard
+
+func foo(firstName:String?, lastName:String?) {
+    
+    // Normal
+    if let first = firstName {
+        if let last = lastName {
+            print(first + " " + last)
+        }
+    }
+    
+    // Guard
+    guard let firstName = firstName else {
+        return
+    }
+    guard let lastName = lastName else {
+        return
+    }
+    
+    print(firstName + lastName)
+}
+
+
+
+
 
