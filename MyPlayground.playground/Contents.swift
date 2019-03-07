@@ -64,7 +64,20 @@ for i in 0...4 {
 
 var tomDictionary = [String:String]()
 var annanTomDictionary:[String:String] = [:]
-tomDictionary["hej"] = "Du"
+tomDictionary["sträng"] = "Du"
+//tomDictionary["nummer"] = 2 // Ej möjligt i en array [String]
+
+var flexibelDictionary:[String:Any] = [:]
+flexibelDictionary["sträng"] = "Du"
+flexibelDictionary["nummer"] = 2 // Möjligt, eftersom strukturen tillåter det!
+
+// Att plocka ur ett nummer från en dictionary (konvertera från Any? -> Int?)
+let num:Int? = flexibelDictionary["nummer"] as? Int
+
+// Alernativt med en if-let
+if let someNum:Int = flexibelDictionary["nummer"] as? Int {
+    let summa = someNum + 1 // Borde vara 3
+}
 
 
 // Swift Övningar 1 - Uppgift 10
@@ -197,7 +210,7 @@ class LastBil : MotorFordon {
     }
 }
 
-let l = LastBil()
+let l = LastBil(längd: 12)
 l.hej()
 
 
